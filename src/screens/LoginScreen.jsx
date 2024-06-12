@@ -1,24 +1,48 @@
+import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-
+import axios from "axios";
 
 export default function LoginScreen({navigation}) {
+    const [email, setEmail] = useState("");
+
+
+    function handleConfirm() {
+        dados = {
+            email: email,
+          };
+      
+          axios.post(
+            'http://localhost:5000/send-email-confirmacao', dados
+          )
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          
+          navigation.navigate('Home')
+    }
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>Login</Text>
             <TextInput
                 placeholder='Email'
                 style={styles.input}
+                value={email}
+                onChangeText={setEmail}
             />
             <TextInput
                 placeholder='Senha'
                 style={styles.input}
             />
             <Button
-                onPress={() => navigation.navigate('Home')}
+                onPress={handleConfirm}
                 title='Entrar'
             />
-            <Text>Não tem conta <TouchableOpacity onPress={() => navigation.navigate('Logout')} style={styles.prop}>entre já</TouchableOpacity> </Text>
+            <Text>Não tem conta <TouchableOpacity onPress={() => navigation.navigate('Logout')} style={styles.prop}>crie já</TouchableOpacity> </Text>
             <Text>Esqueceu a senha <TouchableOpacity onPress={() => navigation.navigate('Recuperar')} style={styles.prop}>clique aqui</TouchableOpacity> </Text>
+            <Text>Quer modificar a sua senha <TouchableOpacity onPress={() => navigation.navigate('Modificar')} style={styles.prop}>clique aqui</TouchableOpacity> </Text>
         </View>
     )
 }
