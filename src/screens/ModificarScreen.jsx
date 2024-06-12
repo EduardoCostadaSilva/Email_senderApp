@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 
-export default function ModificarSenha() {
+export default function ModificarSenha({navigation}) {
 
     const [email, setEmail] = useState("");
 
@@ -30,13 +30,13 @@ export default function ModificarSenha() {
         <View style={styles.container}>
             <Text style={styles.titulo}>Modificar sua senha</Text>
             <TextInput
-                placeholder="digite o seu email"
+                placeholder="digite o seu email novamente"
                 value={email}
                 onChangeText={setEmail}
                 style={styles.input}
             />
             <TextInput
-                placeholder="digite o sua nova senha "
+                placeholder="digite a senha enviada"
                 style={styles.input}
             />
             <Button

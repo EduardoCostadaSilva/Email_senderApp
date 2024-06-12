@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import axios from "axios";
 
-export default function RecuperarScreen() {
+export default function RecuperarScreen({navigation}) {
     const [email, setEmail] = useState("");
 
     function handleEmail() {
@@ -20,7 +20,7 @@ export default function RecuperarScreen() {
                 console.log(error);
             })
 
-            navigation.navigate('Login');
+            navigation.navigate('Modificar');
     }
 
     return (

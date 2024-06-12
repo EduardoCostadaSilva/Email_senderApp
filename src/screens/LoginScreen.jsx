@@ -36,13 +36,15 @@ export default function LoginScreen({navigation}) {
                 placeholder='Senha'
                 style={styles.input}
             />
+            <Text><TouchableOpacity onPress={() => navigation.navigate('Modificar')} style={styles.prop}>modificar a sua senha </TouchableOpacity> </Text>
             <Button
                 onPress={handleConfirm}
                 title='Entrar'
             />
+
             <Text>Não tem conta <TouchableOpacity onPress={() => navigation.navigate('Logout')} style={styles.prop}>crie já</TouchableOpacity> </Text>
             <Text>Esqueceu a senha <TouchableOpacity onPress={() => navigation.navigate('Recuperar')} style={styles.prop}>clique aqui</TouchableOpacity> </Text>
-            <Text>Quer modificar a sua senha <TouchableOpacity onPress={() => navigation.navigate('Modificar')} style={styles.prop}>clique aqui</TouchableOpacity> </Text>
+            
         </View>
     )
 }
